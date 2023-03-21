@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import App from './App.css';
-import editIcon from '/Users/swatirajendra/Desktop/Projects/grocerybud/src/editicon.png';
-import deleteIcon from '/Users/swatirajendra/Desktop/Projects/grocerybud/src/deleteicon.jpeg';
-
+import './App.css';
+import edit from './editicon.png';
+import del from './deleteicon.jpeg';
 
 
 function GroceryList(props) {
@@ -11,8 +10,8 @@ function GroceryList(props) {
           <div id='list'> 
             <li id='items-in-list'>{props.sendItem}
                 <div id='edit-delete-button'>
-                  <button id='edit' onClick={editItem}><img id='edit-icon-image' src={editIcon}></img></button>
-                  <button id='delete' onClick={deleteItem}><img id='delete-icon-image' src={deleteIcon}></img></button>
+                  <button id='edit' onClick={editItem}><img id='edit-icon-image' src={edit}></img></button>
+                  <button id='delete' onClick={deleteItem}><img id='delete-icon-image' src={del}></img></button>
                 </div>
             </li>
             
