@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import './App.css';
 import edit from './editicon.png';
 import del from './deleteicon.jpeg';
@@ -10,8 +10,8 @@ function GroceryList(props) {
           <div id='list'> 
             <li id='items-in-list'>{props.sendItem}
                 <div id='edit-delete-button'>
-                  <button id='edit' onClick={editItem}><img id='edit-icon-image' src={edit}></img></button>
-                  <button id='delete' onClick={deleteItem}><img id='delete-icon-image' src={del}></img></button>
+                  <button id='edit' onClick={editItem}><img id='edit-icon-image' src={edit} alt={'edit icon'}></img></button>
+                  <button id='delete' onClick={deleteItem}><img id='delete-icon-image' src={del} alt={'delete icon'}></img></button>
                 </div>
             </li>
             
