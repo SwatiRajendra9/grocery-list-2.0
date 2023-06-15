@@ -8,7 +8,7 @@ let j=0;
 class mainComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {item:'', showList : 'false', listOfItems : [] , submit:'true', listElementIndex : null, emptyList:false}
+    this.state = {item:'', listOfItems : [] , submitMode:'true', listElementIndex : null}
   } 
 
   handleChange = ({target}) => {
@@ -16,8 +16,6 @@ class mainComponent extends React.Component {
   }
 
   addToList = () => {
-    this.setState({showList:true});
-    this.setState({emptyList:true});
     let b = this.state.listOfItems.slice();
     b[j] = this.state.item;
     this.setState({listOfItems:b});
@@ -32,10 +30,9 @@ class mainComponent extends React.Component {
   }
 
   editInList = (value) => {
-    this.setState({submit:false});
+    this.setState({submitMode:false});
     let findIndex = this.state.listOfItems.indexOf(value);
     this.setState({listElementIndex:findIndex});
-    console.log(this.state.listElementIndex);
     this.setState({item:value});
   }
 
@@ -44,7 +41,7 @@ class mainComponent extends React.Component {
     this.state.listOfItems.splice(this.state.listElementIndex,1);
     this.state.listOfItems.splice(this.state.listElementIndex,0,edit);
     this.setState({listOfItems:this.state.listOfItems}); 
-    this.setState({submit:true});
+    this.setState({submitMode:true});
     this.setState({item:''});
   }
 
@@ -62,18 +59,18 @@ class mainComponent extends React.Component {
           <h1>Grocery List</h1>
           <div id='input-items'>
             <input id='input' type='text' placeholder="e.g. Eggs" value={this.state.item} onChange={this.handleChange} ></input>
-            {this.state.submit ? 
+            {this.state.submitMode ? 
             <button id='submit' onClick={this.addToList}>Add Item</button>
             :
             <button id='other-edit-button' onClick={this.addEditedItem}>Edit</button>
-          }
+            }
           </div>
           {this.state.listOfItems.map((element,index)=>(
-          <GroceryList sendItem = {this.state.listOfItems[index]} sendAllItems={this.state.listOfItems} deleteFromList={this.deleteFromList} editInList={this.editInList} />
+          <GroceryList sendItem = {this.state.listOfItems[index]} deleteFromList={this.deleteFromList} editInList={this.editInList} />
           ))}
-          {this.state.emptyList ?
+          {this.state.listOfItems.length > 0 ?
           <button id='clearlist' onClick={this.deleteList}>Clear All</button> 
-          : null }
+           : null }
 
         </div>
       </div>

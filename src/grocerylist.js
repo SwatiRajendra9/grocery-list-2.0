@@ -1,4 +1,3 @@
-
 import './App.css';
 import edit from './editicon.png';
 import del from './deleteicon.jpeg';
@@ -14,9 +13,7 @@ function GroceryList(props) {
                   <button id='delete' onClick={deleteItem}><img id='delete-icon-image' src={del} alt={'delete icon'}></img></button>
                 </div>
             </li>
-            
           </div>  
-          
   )
 
   function deleteItem() {
